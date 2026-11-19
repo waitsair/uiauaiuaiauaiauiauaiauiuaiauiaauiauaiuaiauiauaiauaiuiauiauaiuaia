@@ -172,7 +172,7 @@ function intro(skipLogo){
 let tmpGender='';
 function bubble(step){
   const b=$('#bub');if(!b)return;
-  if(step==='hello')b.innerHTML='<div class="bubble">Привет! В этом приложении вы сможете заучить хоть какуето хуету.</div><button class="btn ghost late" data-act="skip">Скип</button>';
+  if(step==='hello')b.innerHTML='<div class="bubble">Привет! В этом приложении вы сможете заучить хоть чтото.</div><button class="btn ghost late" data-act="skip">Скип</button>';
   if(step==='gender')b.innerHTML='<div class="bubble">Выберите ваш пол</div><div class="row center fade"><button class="round" data-act="gender" data-g="m">М</button><button class="round" data-act="gender" data-g="f">Ж</button></div>';
   if(step==='name')b.innerHTML='<div class="bubble">Как вас зовут?</div><div class="fade" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:14px"><input class="name-in" id="nm" data-enter="setname" maxlength="30" autocomplete="off" placeholder="'+(tmpGender==='f'?'Алёна':'Саня')+'"><button class="btn" data-act="setname">Готово</button></div>';
   if(step==='name')setTimeout(()=>{const n=$('#nm');n&&n.focus()},500);
@@ -244,14 +244,14 @@ function wordsEdit(){
   view(topbar('home')+'<input class="field" data-f="title" placeholder="Название списка (необязательно)" value="'+esc(d.title)+'">'
    +'<div class="lbl">Заполните своими словами</div>'
    +'<div class="grid head"><span>Русский</span><span>English</span><span>Транскрипция</span><span></span></div>'
-   +d.rows.map((r,i)=>'<div class="grid"><input class="field" data-k="ru" data-i="'+i+'" value="'+esc(r.ru)+'" placeholder="слово" autocomplete="off"><input class="field" data-k="en" data-i="'+i+'" value="'+esc(r.en)+'" placeholder="word" autocomplete="off" autocapitalize="none" spellcheck="false"><input class="field" data-k="tr" data-i="'+i+'" value="'+esc(r.tr)+'" placeholder="[wɜːd]" autocomplete="off"><button class="x" data-act="delrow" data-i="'+i+'" aria-label="Удалить строку">×</button></div>').join('')
+   +d.rows.map((r,i)=>'<div class="grid"><input class="field" data-k="ru" data-i="'+i+'" value="'+esc(r.ru)+'" placeholder="словоЪУЪ" autocomplete="off"><input class="field" data-k="en" data-i="'+i+'" value="'+esc(r.en)+'" placeholder="word" autocomplete="off" autocapitalize="none" spellcheck="false"><input class="field" data-k="tr" data-i="'+i+'" value="'+esc(r.tr)+'" placeholder="[wɜːd]" autocomplete="off"><button class="x" data-act="delrow" data-i="'+i+'" aria-label="Удалить строку">×</button></div>').join('')
    +'<div class="actions"><button class="btn ghost" data-act="addrow">+ строка</button><button class="btn" data-act="wnext">Далее</button></div>');
 }
 ACT.addrow=()=>{cur.data.rows.push({ru:'',en:'',tr:''});wordsEdit();const g=document.querySelectorAll('.grid');const l=g[g.length-1];l&&l.querySelector('input').focus()};
 ACT.delrow=t=>{if(cur.data.rows.length>1){cur.data.rows.splice(+t.dataset.i,1);wordsEdit()}};
 ACT.wnext=()=>{
   cur.data.rows=cur.data.rows.filter(r=>r.ru.trim()||r.en.trim());
-  if(!cur.data.rows.length){cur.data.rows=[{ru:'',en:'',tr:''}];toast('Добавьте хотя бы одно слово');wordsEdit();return}
+  if(!cur.data.rows.length){cur.data.rows=[{ru:'',en:'',tr:''}];toast('Добавьте хотя бы одно слово ЪУЪ');wordsEdit();return}
   commit();go(wordsView);
 };
 ACT.wedit=()=>go(wordsEdit);
