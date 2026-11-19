@@ -172,7 +172,7 @@ function intro(skipLogo){
 let tmpGender='';
 function bubble(step){
   const b=$('#bub');if(!b)return;
-  if(step==='hello')b.innerHTML='<div class="bubble">Привет! В этом приложении вы сможете заучить хоть что.</div><button class="btn ghost late" data-act="skip">Скип</button>';
+  if(step==='hello')b.innerHTML='<div class="bubble">Привет! В этом приложении вы сможете заучить хоть какуето хуету.</div><button class="btn ghost late" data-act="skip">Скип</button>';
   if(step==='gender')b.innerHTML='<div class="bubble">Выберите ваш пол</div><div class="row center fade"><button class="round" data-act="gender" data-g="m">М</button><button class="round" data-act="gender" data-g="f">Ж</button></div>';
   if(step==='name')b.innerHTML='<div class="bubble">Как вас зовут?</div><div class="fade" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:14px"><input class="name-in" id="nm" data-enter="setname" maxlength="30" autocomplete="off" placeholder="'+(tmpGender==='f'?'Алёна':'Саня')+'"><button class="btn" data-act="setname">Готово</button></div>';
   if(step==='name')setTimeout(()=>{const n=$('#nm');n&&n.focus()},500);
