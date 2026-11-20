@@ -244,14 +244,14 @@ function wordsEdit(){
   view(topbar('home')+'<input class="field" data-f="title" placeholder="Название списка (необязательно)" value="'+esc(d.title)+'">'
    +'<div class="lbl">Заполните своими словами</div>'
    +'<div class="grid head"><span>Русский</span><span>English</span><span>Транскрипция</span><span></span></div>'
-   +d.rows.map((r,i)=>'<div class="grid"><input class="field" data-k="ru" data-i="'+i+'" value="'+esc(r.ru)+'" placeholder="словоЪУЪ" autocomplete="off"><input class="field" data-k="en" data-i="'+i+'" value="'+esc(r.en)+'" placeholder="word" autocomplete="off" autocapitalize="none" spellcheck="false"><input class="field" data-k="tr" data-i="'+i+'" value="'+esc(r.tr)+'" placeholder="[wɜːd]" autocomplete="off"><button class="x" data-act="delrow" data-i="'+i+'" aria-label="Удалить строку">×</button></div>').join('')
+   +d.rows.map((r,i)=>'<div class="grid"><input class="field" data-k="ru" data-i="'+i+'" value="'+esc(r.ru)+'" placeholder="слово" autocomplete="off"><input class="field" data-k="en" data-i="'+i+'" value="'+esc(r.en)+'" placeholder="word" autocomplete="off" autocapitalize="none" spellcheck="false"><input class="field" data-k="tr" data-i="'+i+'" value="'+esc(r.tr)+'" placeholder="[wɜːd]" autocomplete="off"><button class="x" data-act="delrow" data-i="'+i+'" aria-label="Удалить строку">×</button></div>').join('')
    +'<div class="actions"><button class="btn ghost" data-act="addrow">+ строка</button><button class="btn" data-act="wnext">Далее</button></div>');
 }
 ACT.addrow=()=>{cur.data.rows.push({ru:'',en:'',tr:''});wordsEdit();const g=document.querySelectorAll('.grid');const l=g[g.length-1];l&&l.querySelector('input').focus()};
 ACT.delrow=t=>{if(cur.data.rows.length>1){cur.data.rows.splice(+t.dataset.i,1);wordsEdit()}};
 ACT.wnext=()=>{
   cur.data.rows=cur.data.rows.filter(r=>r.ru.trim()||r.en.trim());
-  if(!cur.data.rows.length){cur.data.rows=[{ru:'',en:'',tr:''}];toast('Добавьте хотя бы одно слово ЪУЪ');wordsEdit();return}
+  if(!cur.data.rows.length){cur.data.rows=[{ru:'',en:'',tr:''}];toast('Добавьте хотя бы одно слово');wordsEdit();return}
   commit();go(wordsView);
 };
 ACT.wedit=()=>go(wordsEdit);
